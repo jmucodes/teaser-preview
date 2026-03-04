@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appuesta - Confidential Investment Teaser</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page { size: letter; margin: 0; }
+
+:root {
+  --ink: #1a1a1e;
+  --ink-light: #4a4a52;
+  --ink-muted: #7a7a82;
+  --red: #c8102e;
+  --red-dark: #a00d24;
+  --cream: #faf9f7;
+  --white: #ffffff;
+  --border: #e2e0dc;
+  --border-light: #f0eeeb;
+  --accent-bg: #f5f3f0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #e8e6e2;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.page {
+  width: 8.5in;
+  min-height: 11in;
+  background: var(--white);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top accent bar */
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--red);
+}
+
+.content {
+  padding: 44px 48px 36px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-left .company-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--red);
+  text-transform: uppercase;
+}
+
+.header-left .tagline {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+.header-right {
+  text-align: right;
+}
+
+.header-right .conf {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 3px;
+}
+
+.header-right .date {
+  font-size: 9px;
+  color: var(--ink-muted);
+  letter-spacing: 0.5px;
+}
+
+/* Headline */
+.headline {
+  font-family: 'EB Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 18px;
+  max-width: 90%;
+}
+
+.headline em {
+  color: var(--red);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Two column layout */
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 18px;
+}
+
+/* Section labels */
+.section-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.section-text {
+  font-size: 11px;
+  line-height: 1.65;
+  color: var(--ink-light);
+}
+
+.section-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Metrics strip */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  background: var(--accent-bg);
+  border-radius: 6px;
+  padding: 14px 0;
+  margin-bottom: 18px;
+  border: 1px solid var(--border-light);
+}
+
+.metric {
+  text-align: center;
+  padding: 0 12px;
+  border-right: 1px solid var(--border);
+}
+
+.metric:last-child { border-right: none; }
+
+.metric-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.metric-value.red { color: var(--red); }
+
+.metric-label {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+/* Competitive moat pills */
+.moat-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.moat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.moat-pill.red { background: rgba(200,16,46,0.08); color: var(--red); }
+.moat-pill.dark { background: rgba(26,26,30,0.06); color: var(--ink-light); }
+
+/* Deal terms box */
+.deal-box {
+  background: var(--ink);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.deal-item .deal-label {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 4px;
+}
+
+.deal-item .deal-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.deal-item .deal-value span {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+}
+
+.deal-item .deal-sub {
+  font-size: 9px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2px;
+}
+
+/* SAFE note explanation */
+.safe-box {
+  background: var(--accent-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+
+.safe-box .safe-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+
+.safe-box .safe-text {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--ink-light);
+}
+
+/* Use of funds bar */
+.funds-bar-container {
+  margin-bottom: 18px;
+}
+
+.funds-bar {
+  display: flex;
+  height: 18px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.funds-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.3px;
+}
+
+.funds-legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.funds-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  color: var(--ink-light);
+}
+
+.funds-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Team row */
+.team-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 18px;
+  padding: 12px 16px;
+  background: var(--accent-bg);
+  border-radius: 6px;
+  border: 1px solid var(--border-light);
+}
+
+.team-member .tm-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.team-member .tm-role {
+  font-size: 9px;
+  color: var(--ink-muted);
+  margin-top: 1px;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 8px;
+  color: var(--ink-muted);
+  letter-spacing: 0.3px;
+}
+
+.footer-left { line-height: 1.6; }
+
+.footer .disclaimer {
+  max-width: 55%;
+  font-size: 7.5px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  text-align: right;
+}
+
+/* Bullet points */
+.bp {
+  padding-left: 14px;
+  margin: 6px 0;
+}
+.bp li {
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--ink-light);
+  margin-bottom: 3px;
+  list-style-type: none;
+  position: relative;
+}
+.bp li::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 6px;
+  width: 3px;
+  height: 3px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+@media print {
+  body { background: none; padding: 0; }
+  .page { box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+<div class="content">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <img src="Appuesta_Logo_2025.png" alt="Appuesta" style="height: 28px; display: block; background: transparent;">
+    <div class="tagline">Dominican Republic Online Sportsbook</div>
+  </div>
+  <div class="header-right">
+    <div class="conf">Confidential Teaser</div>
+    <div class="date">March 2026</div>
+  </div>
+</div>
+
+<!-- HEADLINE -->
+<div class="headline">
+  A licensed online sportsbook entering the Dominican Republic &mdash; one of only <em>five operators</em> in a <em>$343M</em> newly regulated market with a <em>2-year barrier to entry</em>.
+</div>
+
+<!-- KEY METRICS -->
+<div class="metrics">
+  <div class="metric">
+    <div class="metric-value red">$343M</div>
+    <div class="metric-label">DR Addressable<br>Market (TAM)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-value">5</div>
+    <div class="metric-label">Total Licensed<br>Operators (incl. Appuesta)</div>
+  </div>
+  <div class="metric">
+    <div class="metric-value">$1M+</div>
+    <div class="metric-label">Total Platform<br>Turnover Since Launch</div>
+  </div>
+  <div class="metric">
+    <div class="metric-value">9,200+</div>
+    <div class="metric-label">Registered<br>Users</div>
+  </div>
+  <div class="metric">
+    <div class="metric-value">500+</div>
+    <div class="metric-label">Depositing<br>Users</div>
+  </div>
+</div>
+
+<!-- TWO COLUMNS: Opportunity + Traction -->
+<div class="cols">
+  <div>
+    <div class="section-label">The Opportunity</div>
+    <div class="section-text">
+      The Dominican Republic formalized online gambling regulation in 2024 under Resolution 136-2024. With <strong>928,000 addressable online bettors</strong>, an average revenue per user of $370/year, and only 4 currently active licensees, the market is in its infancy. The licensing process takes approximately <strong>2 years</strong>, creating a natural moat &mdash; a new competitor entering today would not be operational until 2028. Appuesta's sports betting license is in final-stage approval, expected within 60 days.
+    </div>
+    <div class="moat-row">
+      <span class="moat-pill red">Regulated License</span>
+      <span class="moat-pill dark">Local Bank Accounts</span>
+      <span class="moat-pill dark">Credit Card Processing</span>
+      <span class="moat-pill red">Stadium Partnership</span>
+      <span class="moat-pill dark">20 Billboards Secured</span>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Traction &amp; Proof Points</div>
+    <div class="section-text">
+      Appuesta launched in <strong>July 2025</strong> and has been operating in Chile and Ecuador as a live proving ground. The sportsbook offers <strong>40,000+ events monthly</strong> with 24/7 coverage across <strong>20+ leagues</strong>, including all major sports and esports:
+    </div>
+    <ul class="bp">
+      <li><strong>$1M+ total turnover</strong> since July 2025 (8 months)</li>
+      <li><strong>$43.3K total GGR</strong> generated with minimal marketing</li>
+      <li><strong>90%+ real-money ratio</strong> &mdash; cash turnover vs. bonus</li>
+      <li><strong>50&ndash;64% monthly retention</strong> in recent months</li>
+      <li>Player intelligence, CRM analytics, and bonus optimization tools <strong>built in-house</strong></li>
+      <li>Escogido baseball partnership activating <strong>October 2026</strong> for DR winter league</li>
+    </ul>
+  </div>
+</div>
+
+<!-- DEAL TERMS -->
+<div class="deal-box">
+  <div class="deal-item">
+    <div class="deal-label">Raise Amount</div>
+    <div class="deal-value">$500K &ndash; $750K</div>
+    <div class="deal-sub">100% allocated to DR market launch</div>
+  </div>
+  <div class="deal-item">
+    <div class="deal-label">Instrument</div>
+    <div class="deal-value">SAFE Note</div>
+    <div class="deal-sub">Simple Agreement for Future Equity</div>
+  </div>
+  <div class="deal-item">
+    <div class="deal-label">Valuation Cap</div>
+    <div class="deal-value">$4M &ndash; $5M</div>
+    <div class="deal-sub">Pre-money &middot; Pro-rata rights included</div>
+  </div>
+</div>
+
+<!-- SAFE NOTE EXPLAINER -->
+<div class="safe-box">
+  <div class="safe-title">How the SAFE Note Works</div>
+  <div class="safe-text">
+    A SAFE (Simple Agreement for Future Equity) is the standard instrument for early-stage raises, created by Y Combinator. The investor provides capital now in exchange for the <strong>right to receive equity at a future priced round or exit event</strong>, at a price determined by today's agreed valuation cap ($4M&ndash;$5M). There are no interest payments, no maturity date, and no board seats required. If Appuesta raises a Series A at $15M, the SAFE investor's capital converts at the lower cap &mdash; rewarding them for investing early. Pro-rata rights allow the investor to maintain their ownership percentage in future rounds.
+  </div>
+</div>
+
+<!-- USE OF FUNDS -->
+<div class="funds-bar-container">
+  <div class="section-label">Use of Funds &mdash; DR License Already Fully Funded Separately</div>
+  <div class="funds-bar">
+    <div class="funds-segment" style="flex:43; background:var(--red);">43%</div>
+    <div class="funds-segment" style="flex:23; background:#4a4a52;">23%</div>
+    <div class="funds-segment" style="flex:15; background:#7a7a82;">15%</div>
+    <div class="funds-segment" style="flex:3; background:#a0a0a5;"></div>
+    <div class="funds-segment" style="flex:8; background:#b8b8bc;">8%</div>
+    <div class="funds-segment" style="flex:8; background:#d0d0d3; color:var(--ink-light);">8%</div>
+  </div>
+  <div class="funds-legend">
+    <div class="funds-legend-item"><div class="funds-dot" style="background:var(--red);"></div>Marketing &amp; Launch ($280K)</div>
+    <div class="funds-legend-item"><div class="funds-dot" style="background:#4a4a52;"></div>Personnel ($150K)</div>
+    <div class="funds-legend-item"><div class="funds-dot" style="background:#7a7a82;"></div>Working Capital ($100K)</div>
+    <div class="funds-legend-item"><div class="funds-dot" style="background:#a0a0a5;"></div>Payments ($20K)</div>
+    <div class="funds-legend-item"><div class="funds-dot" style="background:#b8b8bc;"></div>Technology ($50K)</div>
+    <div class="funds-legend-item"><div class="funds-dot" style="background:#d0d0d3;"></div>Reserve ($50K)</div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div class="section-label">Founding Team</div>
+<div class="team-row">
+  <div class="team-member">
+    <div class="tm-name">Jos&eacute;</div>
+    <div class="tm-role">Co-Founder &middot; Finance &amp; Growth</div>
+  </div>
+  <div class="team-member">
+    <div class="tm-name">Marcos</div>
+    <div class="tm-role">Co-Founder &middot; Product &amp; Marketing</div>
+  </div>
+  <div class="team-member">
+    <div class="tm-name">Javier</div>
+    <div class="tm-role">Co-Founder &middot; Operations &amp; Compliance</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">
+    DRBETS SRL &middot; JJM Sports Limitada<br>
+    Santo Domingo, Dominican Republic
+  </div>
+  <div class="disclaimer">
+    This document is confidential and intended solely for the use of the individual or entity to whom it is addressed. It does not constitute an offer to sell or a solicitation of an offer to buy any securities. All information herein is preliminary and subject to change.
+  </div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
